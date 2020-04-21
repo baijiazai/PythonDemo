@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+</head>
+<body>
+<h2>聊天室</h2>
+<hr>
+<p>
+    用户名：{{ username }}
+</p>
+<div style="width: 400px; height: 300px; border: 1px solid black;">
+    <div id="content1">
+        <p></p>
+    </div>
+</div>
+
+<input type="text" id="msg">
+    <input type="button" id="send" value="发送">
+
+    <script src="https://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        // 连接 WebSocket 服务器
+        let ws = new WebSocket('ws://localhost:8000/chatroom/')
+
+        // 发送消息给服务器
+        $('#send').click(function () {
+            let message = $('#msg').val();
+            ws.send(message);
+        })
+
+        // 接收服务器的消息
+        ws.onmessage = function (e) {
+            $('#content1').append(`<p>${e.data}</p>`)
+        }
+    </script>
+</body>
+</html>
