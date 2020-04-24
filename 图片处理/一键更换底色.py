@@ -4,7 +4,7 @@ from PIL import Image
 from removebg import RemoveBg
 
 # API KEY获取官方网站：https://www.remove.bg/zh/api
-API_KEY = '98siHX6t8YgDbHT6xbTygjEX'
+API_KEY = ''
 OPEN_DIR = '原图/'
 SAVE_DIR = '证件照/'
 
